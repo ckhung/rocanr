@@ -1,0 +1,4 @@
+graft rocanr/templates
+graft rocanr/static
+graft misc
+include rocanr/GoogleNews-vectors.txt
