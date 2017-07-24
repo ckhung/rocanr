@@ -16,7 +16,7 @@ It is not for production use.
 Clone or download this repo.
 In the repo's top level directory, do the following:
 ```
-pushd rocanr ; ln -sf GoogleNews-vectors-1k.txt GoogleNews-vectors.txt ; popd
+pushd rocanr ; ln -s GoogleNews-vectors-1k.txt GoogleNews-vectors.txt ; popd
 virtualenv .env
 source .env/bin/activate
 pip install --editable .
@@ -59,6 +59,6 @@ Note: You can also generate a 1k model from the 60k model like this:
 
 ## Visualizing the Results with t-sne-lab
 
-See (t-sne-lab)[https://ckhung.github.io/t-sne-lab/]
+See [t-sne-lab](https://ckhung.github.io/t-sne-lab/)
 and use misc/rocanr-for-t-sne.json as a configuration file for t-sne-lab.
 
