@@ -38,5 +38,5 @@ def q_analogy():
         return Response('"%s" not in vocab' % word3, mimetype='text/plain')
     topn = request.args.get('topn')
     topn = int(topn) if topn else 10
-    result = app.model.most_similar(positive=[word1,word3], negative=[word2], topn=topn)
+    result = app.model.most_similar(positive=[word2,word3], negative=[word1], topn=topn)
     return Response(app.gen_output(request.args, result), mimetype='text/plain')

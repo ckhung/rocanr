@@ -15,6 +15,7 @@
 // http://mccormickml.com/2016/04/12/googles-pretrained-word2vec-model-in-python/
 // https://stackoverflow.com/questions/27324292/convert-word2vec-bin-file-to-text
 // modified by ckhung@cyut.edu.tw
+// gcc -Wall gw2v-txt.c -lm -o gw2v-txt
 
 #include <stdio.h>
 #include <string.h>

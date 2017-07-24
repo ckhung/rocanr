@@ -6,6 +6,8 @@ setup(
     include_package_data=True,
     install_requires=[
         'rocanr',
+        'flask-cors',
+        'gensim',
     ],
     setup_requires=[
         'pytest-runner',

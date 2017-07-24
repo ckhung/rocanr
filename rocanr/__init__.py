@@ -1,5 +1,6 @@
 import os
 from flask import Flask, request, Response, render_template, flash
+from flask_cors import CORS, cross_origin
 from gensim.models import KeyedVectors
 
 class rocanr(Flask):
@@ -36,6 +37,7 @@ class rocanr(Flask):
         return output
 
 app = rocanr()
+CORS(app)
 
 import rocanr.views
 

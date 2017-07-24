@@ -2,4 +2,4 @@
 *.eggs
 *.egg-info
 *.py[co]
-
+misc/gw2v-txt
