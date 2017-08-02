@@ -70,3 +70,8 @@ def q_analogy():
     topn = int(topn) if topn else 10
     result = app.model.most_similar(positive=[word2,word3], negative=[word1], topn=topn)
     return Response(app.gen_output(request.args, result), mimetype='text/plain')
+
+@app.route('/q/debug')
+def q_debug():
+    n = str(app.model.layer1_size)
+    return Response(n, mimetype='text/plain')

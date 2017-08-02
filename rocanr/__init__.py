@@ -19,6 +19,8 @@ class rocanr(Flask):
     def gen_output(self, request_args, result):
         dim = request_args.get('dim')
         dim = int(dim) if dim else 0
+        if dim > self.model.vector_size:
+            dim = self.model.vector_size 
         header = request_args.get('hd')
         if header:
             output = 'word,prob'

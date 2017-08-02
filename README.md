@@ -73,4 +73,7 @@ Note: You can also generate a 1k model from the 60k model like this:
 
 See [t-sne-lab](https://ckhung.github.io/t-sne-lab/)
 and use misc/rocanr-for-t-sne.json as a configuration file for t-sne-lab.
-
+The following is the result of displaying the rocanr query
+```/q/nearest?w=month&self=1&hd=1&topn=100&dim=999```
+in t-sne-lab.
+![Displaying the result of a rocanr query in t-sne-lab](nearest-month.png)
