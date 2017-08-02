@@ -4,6 +4,8 @@ vocabulary-in-R^n server: a query-only minimal RESTful interface to gensim.model
 This project is experimental.
 It is not for production use.
 **Do not expose the service to the outside world.**
+However, you may add ```--host 0.0.0.0''' to the flask
+command line if you insist on exposing it.
 
 ## Background
 
