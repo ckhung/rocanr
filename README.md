@@ -18,7 +18,7 @@ command line if you insist on exposing it.
 Clone or download this repo.
 In the repo's top level directory, do the following:
 ```
-pushd rocanr ; ln -s GoogleNews-vectors-1k.txt GoogleNews-vectors.txt ; popd
+pushd rocanr ; ln -sf GoogleNews-vectors-1k.txt GoogleNews-vectors.txt ; popd
 virtualenv .env
 source .env/bin/activate
 pip install --editable .
@@ -33,13 +33,23 @@ being neighbors of the word "years".
 
 Here are a few more example queries:
 - ```/q/nearest?w=years&hd=1``` also show a header row
+- ```/q/nearest?w=years&self=1``` also show a row for the query word itself
 - ```/q/nearest?w=years&topn=20``` show top 20 matches instead of top 10
 - ```/q/nearest?w=years&dim=5``` show the first 5 dimensions
   of the word vectors (only meaningful if the pre-trained model
   has been processed by PCA and the dimensions are sorted)
 - ```/q/nearest?w=years&dim=9999``` show all available dimensions of the word vectors
 
-For word analogy queries, try:
+From a word list, pick the word which is most different from the others:
+- ```/q/mismatch?wl=February+Friday+June+December```
+- ```/q/mismatch?wl=February|Friday|June|December&sep=|```
+  same as above, but use ```|``` as word separator instead of ```+```
+
+How similar are these two words? (1: most similar; may be negative)
+- ```/q/similarity?w1=years&w2=days```
+- ```/q/similarity?w1=decades&w2=blast```
+
+Word analogy queries:
 - ```/q/analogy?w1=he&w2=she&w3=him```
 - ```/q/analogy?w1=Friday&w2=week&w3=June```
 

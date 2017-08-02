@@ -16,8 +16,38 @@ def q_nearest():
         return Response('"%s" not in vocab' % word, mimetype='text/plain')
     topn = request.args.get('topn')
     topn = int(topn) if topn else 10
-    result = app.model.most_similar(positive=[word], topn=topn)
+    result = [(word,1)] if request.args.get('self') else []
+    result += app.model.most_similar(positive=[word], topn=topn)
     return Response(app.gen_output(request.args, result), mimetype='text/plain')
+
+@app.route('/q/mismatch')
+def q_mismatch():
+    word_list = request.args.get('wl')
+    if not word_list:
+        return Response('arg "wl" missing', mimetype='text/plain')
+    sep = request.args.get('sep')
+    if not sep:
+        sep = ' '
+    word_list = word_list.split(sep)
+    for word in word_list:
+        if not word in app.model.wv.vocab:
+            return Response('"%s" not in vocab' % word, mimetype='text/plain')
+    return Response(app.model.doesnt_match(word_list), mimetype='text/plain')
+
+@app.route('/q/similarity')
+def q_similarity():
+    word1 = request.args.get('w1')
+    word2 = request.args.get('w2')
+    if not word1:
+        return Response('arg "w1" missing', mimetype='text/plain')
+    if not word2:
+        return Response('arg "w2" missing', mimetype='text/plain')
+    if not word1 in app.model.wv.vocab:
+        return Response('"%s" not in vocab' % word1, mimetype='text/plain')
+    if not word2 in app.model.wv.vocab:
+        return Response('"%s" not in vocab' % word2, mimetype='text/plain')
+    result = str(app.model.similarity(word1, word2))
+    return Response(result, mimetype='text/plain')
 
 @app.route('/q/analogy')
 def q_analogy():
